@@ -90,7 +90,7 @@ namespace VRTK
                 }
                 customLineRenderer = tracerLineRenderer.GetComponent<LineRenderer>();
 #if UNITY_5_5_OR_NEWER
-                customLineRenderer.numPositions = frequency;
+                customLineRenderer.positionCount = frequency;
 #else
                 customLineRenderer.SetVertexCount(frequency);
 #endif
