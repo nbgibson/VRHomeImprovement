@@ -1,7 +1,7 @@
 # VRHomeImprovement
 ## Attempting to replicate the Lowe's Holoroom How To utilizing the VRTK framework
 
-
+VR provides a unique learning oppurtunity for people to establish a higher level of understanding and retention of tasks via immersion and muscle memory. By trying one's hand at home improvement in a virtual enviorment, users can learn to be more handy without risking destroying their property value.
 
 ### Progression
 
