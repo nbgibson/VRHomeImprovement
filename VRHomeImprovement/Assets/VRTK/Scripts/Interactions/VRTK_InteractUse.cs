@@ -20,6 +20,7 @@ namespace VRTK
     ///
     /// `VRTK/Examples/008_Controller_UsingAGrabbedObject` shows that objects can be grabbed with one button and used with another (e.g. firing a gun).
     /// </example>
+    [AddComponentMenu("VRTK/Scripts/Interactions/VRTK_InteractUse")]
     public class VRTK_InteractUse : MonoBehaviour
     {
         [Header("Use Settings")]
@@ -152,12 +153,14 @@ namespace VRTK
             }
 
             ManageUseListener(true);
+            ManageInteractTouchListener(true);
         }
 
         protected virtual void OnDisable()
         {
-            ForceStopUsing();
+            ForceResetUsing();
             ManageUseListener(false);
+            ManageInteractTouchListener(false);
         }
 
         protected virtual void Update()

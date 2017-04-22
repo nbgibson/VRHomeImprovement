@@ -9,6 +9,7 @@ namespace VRTK
     /// <example>
     /// `VRTK/Examples/012_Controller_PointerWithAreaCollision` shows how a Bezier Pointer with the Play Area Cursor and Collision Detection enabled can be used to traverse a game area but not allow teleporting into areas where the walls or other objects would fall into the play area space enabling the user to enter walls.
     /// </example>
+    [AddComponentMenu("VRTK/Scripts/Pointers/VRTK_PlayAreaCursor")]
     public class VRTK_PlayAreaCursor : MonoBehaviour
     {
         [Tooltip("Determines the size of the play area cursor and collider. If the values are left as zero then the Play Area Cursor will be sized to the calibrated Play Area space.")]
@@ -272,7 +273,7 @@ namespace VRTK
 
         protected virtual string GeneratePlayAreaCursorName()
         {
-            return string.Format("[{0}]PlayAreaCursor", gameObject.name);
+            return VRTK_SharedMethods.GenerateVRTKObjectName(true, gameObject.name, "PlayAreaCursor");
         }
 
         protected virtual void GeneratePlayAreaCursorFromPrefab(Vector3[] cursorDrawVertices)
@@ -289,13 +290,13 @@ namespace VRTK
             float height = 0.01f;
 
             playAreaCursorValidChild = Instantiate(validLocationObject);
-            playAreaCursorValidChild.name = "ValidArea";
+            playAreaCursorValidChild.name = VRTK_SharedMethods.GenerateVRTKObjectName(true, "ValidArea");
             playAreaCursorValidChild.transform.SetParent(playAreaCursor.transform);
 
             if (invalidLocationObject != null)
             {
                 playAreaCursorInvalidChild = Instantiate(invalidLocationObject);
-                playAreaCursorInvalidChild.name = "InvalidArea";
+                playAreaCursorInvalidChild.name = VRTK_SharedMethods.GenerateVRTKObjectName(true, "InvalidArea");
                 playAreaCursorInvalidChild.transform.SetParent(playAreaCursor.transform);
             }
 
@@ -330,7 +331,7 @@ namespace VRTK
             float height = 0.01f;
 
             playAreaCursor = new GameObject(GeneratePlayAreaCursorName());
-            playAreaCursor.transform.parent = null;
+            playAreaCursor.transform.SetParent(null);
             playAreaCursor.transform.localScale = new Vector3(width, height, length);
 
             float playAreaBoundaryX = playArea.transform.localScale.x / 2;
@@ -346,7 +347,7 @@ namespace VRTK
         protected virtual void DrawPlayAreaCursorBoundary(int index, float left, float right, float top, float bottom, float thickness, Vector3 localPosition)
         {
             GameObject playAreaCursorBoundary = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            playAreaCursorBoundary.name = string.Format("[{0}]PlayAreaCursorBoundary_" + index, gameObject.name);
+            playAreaCursorBoundary.name = VRTK_SharedMethods.GenerateVRTKObjectName(true, gameObject.name, "PlayAreaCursorBoundary", index);
             VRTK_PlayerObject.SetPlayerObject(playAreaCursorBoundary, VRTK_PlayerObject.ObjectTypes.Pointer);
 
             float width = (right - left) / 1.065f;
@@ -357,7 +358,7 @@ namespace VRTK
             Destroy(playAreaCursorBoundary.GetComponent<BoxCollider>());
             playAreaCursorBoundary.layer = LayerMask.NameToLayer("Ignore Raycast");
 
-            playAreaCursorBoundary.transform.parent = playAreaCursor.transform;
+            playAreaCursorBoundary.transform.SetParent(playAreaCursor.transform);
             playAreaCursorBoundary.transform.localPosition = localPosition;
 
             playAreaCursorBoundaries[index] = playAreaCursorBoundary;

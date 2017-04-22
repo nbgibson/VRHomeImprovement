@@ -1,10 +1,13 @@
 ﻿namespace VRTK
 {
     using UnityEngine;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
     using System;
     using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using System.Linq;
+    using System.Text.RegularExpressions;
 
     public class VRTK_Logger : MonoBehaviour
     {
@@ -52,11 +55,14 @@
         public LogLevels minLevel = LogLevels.Trace;
         public bool throwExceptions = true;
 
+#if UNITY_EDITOR
+        [InitializeOnLoadMethod]
+#endif
         public static void CreateIfNotExists()
         {
             if (instance == null)
             {
-                GameObject loggerObject = new GameObject("[VRTK_Logger]")
+                GameObject loggerObject = new GameObject(VRTK_SharedMethods.GenerateVRTKObjectName(true, "Logger"))
                 {
                     hideFlags = HideFlags.DontSaveInEditor | HideFlags.HideInHierarchy
                 };
@@ -149,7 +155,7 @@
                 case LogLevels.Fatal:
                     if (instance.throwExceptions)
                     {
-                        throw new System.Exception(message);
+                        throw new Exception(message);
                     }
                     else
                     {

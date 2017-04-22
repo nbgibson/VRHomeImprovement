@@ -33,6 +33,7 @@ namespace VRTK
     /// <example>
     /// `VRTK/Examples/005_Controller/BasicObjectGrabbing` demonstrates the highlighting of objects that have the `VRTK_InteractableObject` script added to them to show the ability to highlight interactable objects when they are touched by the controllers.
     /// </example>
+    [AddComponentMenu("VRTK/Scripts/Interactions/VRTK_InteractTouch")]
     public class VRTK_InteractTouch : MonoBehaviour
     {
         [Tooltip("An optional GameObject that contains the compound colliders to represent the touching object. If this is empty then the collider will be auto generated at runtime to match the SDK default controller.")]
@@ -429,7 +430,7 @@ namespace VRTK
                 controllerCollisionDetector = Instantiate(defaultColliderPrefab, transform.position, transform.rotation) as GameObject;
                 controllerCollisionDetector.transform.SetParent(transform);
                 controllerCollisionDetector.transform.localScale = transform.localScale;
-                controllerCollisionDetector.name = "VRTK_ControllerCollidersContainer";
+                controllerCollisionDetector.name = VRTK_SharedMethods.GenerateVRTKObjectName(true, "Controller", "CollidersContainer");
                 destroyColliderOnDisable = true;
             }
             else

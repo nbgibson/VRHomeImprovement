@@ -15,6 +15,7 @@ namespace VRTK
     /// <example>
     /// `VRTK/Examples/035_Controller_OpacityAndHighlighting` demonstrates the ability to change the opacity of a controller model and to highlight specific elements of a controller such as the buttons or even the entire controller model.
     /// </example>
+    [AddComponentMenu("VRTK/Scripts/Interactions/VRTK_ControllerHighlighter")]
     public class VRTK_ControllerHighlighter : MonoBehaviour
     {
         [Header("General Settings")]
@@ -87,7 +88,6 @@ namespace VRTK
         public virtual void ConfigureControllerPaths()
         {
             cachedElements = new Dictionary<string, Transform>();
-            SDK_BaseController.ControllerHand controllerHand = VRTK_DeviceFinder.GetControllerHand(controllerAlias);
             modelElementPaths.bodyModelPath = GetElementPath(modelElementPaths.bodyModelPath, SDK_BaseController.ControllerElements.Body);
             modelElementPaths.triggerModelPath = GetElementPath(modelElementPaths.triggerModelPath, SDK_BaseController.ControllerElements.Trigger);
             modelElementPaths.leftGripModelPath = GetElementPath(modelElementPaths.leftGripModelPath, SDK_BaseController.ControllerElements.GripLeft);
