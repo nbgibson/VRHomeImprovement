@@ -34,7 +34,9 @@ VR provides a unique learning oppurtunity for people to establish a higher level
 #### Curtain Hanging
 
   + Remove existing curtain rod -> Remove existing mounting screws -> Sand holes from screws -> Spackle holes -> Sand dried spackle ->  Paint over dried spackle -> Install drywall anchors -> Screw curtain rod mounts into anchors -> Return curtain rod -> Hang curtain
-  
+ 
+#### Gardening
+  + Clear area -> Remove existing sod -> Make foundation for base planter layer -> Lay base planters -> Lay subsequent layers of planters -> Score/till soil -> Add manure/fertilizer -> Add gardening soil -> Further fertilizing -> Watering -> Transplanting plants into the garden
   
  ### Potential additions
  
