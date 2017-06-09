@@ -8,6 +8,8 @@ VR provides a unique learning oppurtunity for people to establish a higher level
 #### Shower tiling
 
   + Level/Lines -> Mix moartar -> Spread moartar -> Place tiles -> Grout tiles -> Wipe off excess grout
+  
+  Note to self, add ring of rays around the outside rim of any object that has a pouring action. Base of rays are to be connected to the rim and should always be pointing to the floor of the scene. If the angle of difference between the ray and the rim is beyond a threshold, begin the pouring action. If below the threshhold, end pouring action.
 
 #### Garbage disposal replacing
 
