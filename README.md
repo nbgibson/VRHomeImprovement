@@ -42,4 +42,4 @@ VR provides a unique learning oppurtunity for people to establish a higher level
   
  ### Potential additions
  
-  + Replacing thermostats with smart thermostats, gardening(?)
+  + Replacing thermostats with smart thermostats
